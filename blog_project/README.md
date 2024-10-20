@@ -11,8 +11,8 @@
 1. Clone the repository:
 
    ```
-   git clone <repository_url>
-   cd blog_project
+   git clone https://github.com/tatusamel/CMPE272-assignments.git
+   cd CMPE272-assignments/blog_project
    ```
 
 2. Build and start the container using Docker Compose:
@@ -40,7 +40,3 @@ docker-compose run web python manage.py migrate
    ```
 
 2. Access the admin panel at `http://localhost:8000/admin`.
-
-```
-
-```
