@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service-deployment
+  labels:
+    app: user-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: user-service
+  template:
+    metadata:
+      labels:
+        app: user-service
+    spec:
+      containers:
+        - name: user-service
+          image: serhatgundem/user-service:latest
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - name: user-sqlite-storage
+              mountPath: /app/db.sqlite3
+              subPath: db.sqlite3
+      imagePullSecrets:
+        - name: regcred
+      volumes:
+        - name: user-sqlite-storage
+          persistentVolumeClaim:
+            claimName: user-sqlite-pvc
